@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Introduction to Reproducible Research</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Landscape Archaeolgoy Conference 2018 | Session 44C" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="moin.css" type="text/css" />
+    <link rel="stylesheet" href="moin_fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Introduction to Reproducible Research
+## using open source software.
+### Landscape Archaeolgoy Conference 2018 | Session 44C
+### 2018-09-19 | CRC1266-A2 | Daniel Knitter &amp; Wolfgang Hamer
+
+---
+
+layout: true
+&lt;div class="my-header"&gt;&lt;/div&gt;
+
+
+
+---
+
+# Aim of the Session
+
+Offer an overview about
+
+- the necessity of Reproducible Research
+- present the ease of a reproducible research practice thanks to modern tools
+- persuade you by presenting "hands-on" case studies
+
+---
+
+# List of Presentations
+
+1. Reproducible research with R
+
+2. .bold[Joe Roe] `fieldwalkr`: an R package for spatial sampling and field survey 
+simulation
+
+3. .bold[Wolfgang Hamer] `FuzzyLandscapes` - A reproducible approach to analyse uncertain 
+parameters
+
+4. .strikethrough[.bold[Justin Pargeter] Open-air preservation of miniaturised lithics: computer simulations and experimental research in the Cederberg Mountains, southern Africa 
+]
+
+5. .bold[Vincent Haburaj] Hyperspectral imaging for improving stratigraphic interpretation in 
+Yeha, Ethiopia
+
+6. .bold[Jesús Corsà] Settlement and territory in the north of the district/taifa of Lárida 
+(northeast of the al-Andalus 11th and 12th centuries)
+
+7. Final discussion
+
+Please visit https://github.com/ISAAKiel/LAC2018_Session_44C for access to the presentations and links
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="moin_macros.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "monokai",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

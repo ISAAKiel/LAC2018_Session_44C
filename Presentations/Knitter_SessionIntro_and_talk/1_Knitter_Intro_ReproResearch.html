@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Introduction to Reproducible Research</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Landscape Archaeolgoy Conference 2018 | Session 44C" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="moin.css" type="text/css" />
+    <link rel="stylesheet" href="moin_fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Introduction to Reproducible Research
+## using open source software
+### Landscape Archaeolgoy Conference 2018 | Session 44C
+### 2018-09-19 | CRC1266-A2 | Daniel Knitter &amp; Wolfgang Hamer
+
+---
+
+layout: true
+&lt;div class="my-header"&gt;&lt;/div&gt;
+
+
+---
+
+# Introduction
+
+Why should research be reproducible?
+
+.pull-left[
+
+For Science
+
+- to have a standard that allows to judge scientific claims
+- Avoiding duplication and encourage cumulative knowledge development
+
+]
+
+.pull-right[
+
+For You
+
+- gain better work habits
+- simplify and deepen teamwork
+- changes are easier
+- gain higher impact (?)
+
+]
+
+.reference[Gandrud, C., 2014. Reproducible Research With R and RStudio, The R Series. CRC Press, Boca Raton; London; New York.]
+
+---
+
+# Literate Programming
+
+- Knuth paper
+- definition
+
+---
+
+# Reproducible Research
+
+- why necessary
+- T and pi-shaped researcher
+- software solutions
+  - R and e.g package `rrtools`
+  - ..
+
+---
+
+# Markup languages
+
+Markdown, RMarkdown, Pandoc, 
+
+.center[![:scale 70%](figures/Rmd.png)]
+
+.reference[Cooper, N., Hsing, P.-Y. (Eds.), 2017. A Guide to Reproducible Code in Ecology and Evolution. British Ecological Society.([pdf](https://www.britishecologicalsociety.org/wp-content/uploads/2017/12/guide-to-reproducible-code.pdf))]
+
+---
+
+# Version control
+
+.left[![:scale 10%](figures/gitlogo.png)]
+
+.pull-left[
+.center[![:scale 80%](figures/version_control_workflow.png)]
+
+.reference[Cooper, N., Hsing, P.-Y. (Eds.), 2017. A Guide to Reproducible Code in Ecology and Evolution. British Ecological Society.([pdf](https://www.britishecologicalsociety.org/wp-content/uploads/2017/12/guide-to-reproducible-code.pdf))]
+]
+--
+
+.pull-right[
+.center[![:scale 80%](figures/gitbranches.png)]
+
+.reference[https://git-scm.com/]
+]
+
+---
+
+
+# Containerization
+
+![:scale 10%](./figures/docker_logo.png)
+
+or "operating-system-level virtualization" or .italic[made to last/run forever]
+
+- create a container with all your data, software, scripts, publication text
+- never run into the issue of incompatible or too old software versions
+
+---
+
+# Data publishing
+
+- Zenodo
+- Figshare
+    </textarea>
+<script src="libs/remark-latest.min.js"></script>
+<script src="moin_macros.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "monokai",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

@@ -1,0 +1,113 @@
+---
+title: "Introduction to Reproducible Research"
+subtitle: "using open source software"
+author: "Landscape Archaeolgoy Conference 2018 | Session 44C"
+date: "2018-09-19 | CRC1266-A2 | Daniel Knitter & Wolfgang Hamer"
+output:
+  xaringan::moon_reader:
+    css: ["default","moin.css","moin_fonts.css"]
+    lib_dir: libs
+    chakra: libs/remark-latest.min.js
+    nature:      	
+      ratio: "16:9"
+      highlightStyle: monokai
+      highlightLines: true
+      countIncrementalSlides: false
+      beforeInit: "moin_macros.js"
+---
+layout: true
+<div class="my-header"></div>
+
+
+---
+
+# Introduction
+
+Why should research be reproducible?
+
+.pull-left[
+
+For Science
+
+- to have a standard that allows to judge scientific claims
+- Avoiding duplication and encourage cumulative knowledge development
+
+]
+
+.pull-right[
+
+For You
+
+- gain better work habits
+- simplify and deepen teamwork
+- changes are easier
+- gain higher impact (?)
+
+]
+
+.reference[Gandrud, C., 2014. Reproducible Research With R and RStudio, The R Series. CRC Press, Boca Raton; London; New York.]
+
+---
+
+# Literate Programming
+
+- Knuth paper
+- definition
+
+---
+
+# Reproducible Research
+
+- why necessary
+- T and pi-shaped researcher
+- software solutions
+  - R and e.g package `rrtools`
+  - ..
+
+---
+
+# Markup languages
+
+Markdown, RMarkdown, Pandoc, 
+
+.center[![:scale 70%](figures/Rmd.png)]
+
+.reference[Cooper, N., Hsing, P.-Y. (Eds.), 2017. A Guide to Reproducible Code in Ecology and Evolution. British Ecological Society.([pdf](https://www.britishecologicalsociety.org/wp-content/uploads/2017/12/guide-to-reproducible-code.pdf))]
+
+---
+
+# Version control
+
+.left[![:scale 10%](figures/gitlogo.png)]
+
+.pull-left[
+.center[![:scale 80%](figures/version_control_workflow.png)]
+
+.reference[Cooper, N., Hsing, P.-Y. (Eds.), 2017. A Guide to Reproducible Code in Ecology and Evolution. British Ecological Society.([pdf](https://www.britishecologicalsociety.org/wp-content/uploads/2017/12/guide-to-reproducible-code.pdf))]
+]
+--
+
+.pull-right[
+.center[![:scale 80%](figures/gitbranches.png)]
+
+.reference[https://git-scm.com/]
+]
+
+---
+
+
+# Containerization
+
+![:scale 10%](./figures/docker_logo.png)
+
+or "operating-system-level virtualization" or .italic[made to last/run forever]
+
+- create a container with all your data, software, scripts, publication text
+- never run into the issue of incompatible or too old software versions
+
+---
+
+# Data publishing
+
+- Zenodo
+- Figshare

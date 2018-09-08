@@ -1,0 +1,57 @@
+---
+title: "Introduction to Reproducible Research"
+subtitle: "using open source software."
+author: "Landscape Archaeolgoy Conference 2018 | Session 44C"
+date: "2018-09-19 | CRC1266-A2 | Daniel Knitter & Wolfgang Hamer"
+output:
+  xaringan::moon_reader:
+    css: ["default","moin.css","moin_fonts.css"]
+    lib_dir: libs
+    nature:      	
+      ratio: "16:9"
+      highlightStyle: monokai
+      highlightLines: true
+      countIncrementalSlides: false
+      beforeInit: "moin_macros.js"
+---
+layout: true
+<div class="my-header"></div>
+
+```{r setup, include=FALSE}
+
+```
+
+---
+
+# Aim of the Session
+
+Offer an overview about
+
+- the necessity of Reproducible Research
+- present the ease of a reproducible research practice thanks to modern tools
+- persuade you by presenting "hands-on" case studies
+
+---
+
+# List of Presentations
+
+1. Reproducible research with R
+
+2. .bold[Joe Roe] `fieldwalkr`: an R package for spatial sampling and field survey 
+simulation
+
+3. .bold[Wolfgang Hamer] `FuzzyLandscapes` - A reproducible approach to analyse uncertain 
+parameters
+
+4. .strikethrough[.bold[Justin Pargeter] Open-air preservation of miniaturised lithics: computer simulations and experimental research in the Cederberg Mountains, southern Africa 
+]
+
+5. .bold[Vincent Haburaj] Hyperspectral imaging for improving stratigraphic interpretation in 
+Yeha, Ethiopia
+
+6. .bold[Jesús Corsà] Settlement and territory in the north of the district/taifa of Lárida 
+(northeast of the al-Andalus 11th and 12th centuries)
+
+7. Final discussion
+
+Please visit https://github.com/ISAAKiel/LAC2018_Session_44C for access to the presentations and links

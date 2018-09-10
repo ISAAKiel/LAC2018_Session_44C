@@ -29,6 +29,8 @@ layout: true
 
 Why should research be reproducible?
 
+--
+
 .pull-left[
 
 For Science
@@ -37,6 +39,8 @@ For Science
 - Avoiding duplication and encourage cumulative knowledge development
 
 ]
+
+--
 
 .pull-right[
 
@@ -53,20 +57,114 @@ For You
 
 ---
 
-# Literate Programming
+# Reproducible Research
 
-- Knuth paper
-- definition
+.italic["Replication is the ultimate standard by which scientific claims are judged."]
+
+--
+
+.italic["However, with computational science and the corresponding collection of large and complex data sets the notion of replication can be murkier."]
+
+--
+
+Accordingly, Researchers .italic["(...) have been calling for reproducibility, or reproducible research, as an attainable minimum standard for assessing the value of scientific claims, particularly when full independent replication of a study is not feasible."]
+
+.center[
+
+![:scale 70%](./figures/peng_reprod_system.png)
+
+.reference[Peng, R.D., 2011. Reproducible Research in Computational Science. Science 334, 1226–1227. https://doi.org/10.1126/science.1213847]
+
+]
 
 ---
 
+
 # Reproducible Research
 
-- why necessary
-- T and pi-shaped researcher
-- software solutions
-  - R and e.g package `rrtools`
-  - ..
+Today, most of our work is data-intensive work (or we make it as such thanks to computers). 
+
+.pull-left[
+
+We live in the "fourth paradigm" (Gray 2009)
+
+.center[![:scale 70%](figures/gray_escience.png)]
+
+.reference[
+Gray, J., 2009. A Transformed Scientific Method, in: Hey, T., Tansley, S., Tolle, K. (Eds.), The Fourth Paradigm: Data-Intensive Scientific Discovery. Microsoft Research, Redmond, Washington, pp. 17--31.
+]
+
+]
+
+--
+
+.pull-right[
+New, pi-shaped scientists are needed (Marwick 2017) and students have to be trained to be such (Faris 2011).
+
+.center[![:scale 80%](figures/marwick2017a_tandpi.png)]
+
+.reference[
+Marwick, B., 2017. Computational Reproducibility in Archaeological Research: Basic Principles and a Case Study of Their Implementation. Journal of Archaeological Method and Theory 24, 424–450. https://doi.org/10.1007/s10816-015-9272-9
+
+Faris, J., Kolker, Evelyne, Szalay, A., Bradlow, L., Deelman, E., Feng, W., Qiu, J., Russell, D., Stewart, E., Kolker, Eugene, 2011. Communication and Data-Intensive Science in the Beginning of the 21st Century. OMICS: A Journal of Integrative Biology 15, 213–215. https://doi.org/10.1089/omi.2011.0008
+
+]
+]
+
+---
+
+# Reproducible Research: Help for archaeologists
+
+.center[Places to get you started:]
+--
+.pull-left[
+
+Terms, techniques, software, relevant for archaeologists:
+
+.center[![:scale 90%](figures/marwick2017a_advertise.png)]
+
+.reference[Marwick, B., 2017. Computational Reproducibility in Archaeological Research: Basic Principles and a Case Study of Their Implementation. Journal of Archaeological Method and Theory 24, 424–450. https://doi.org/10.1007/s10816-015-9272-9
+]
+
+]
+
+--
+
+.pull-right[
+
+A software-tool that helps you make the first steps:
+
+.center[
+![:scale 100%](figures/rrtools_advertise.png)
+
+https://github.com/benmarwick/rrtools
+]
+
+]
+
+---
+
+class: full-page-slide
+
+# The basic terms and elements
+
+---
+
+# Literate Programming
+
+.pull-left[
+The Computer Journal, .bold[1983]
+
+![:scale 80%](./figures/knuth_litprog.png)
+]
+
+--
+
+.pull-right[
+![:scale 90%](./figures/knuth_litprog2.png)
+
+![:scale 90%](./figures/knuth_litprog3.png)
+]
 
 ---
 
@@ -115,6 +213,42 @@ or "operating-system-level virtualization" or .italic[made to last/run forever]
 
 - Zenodo
 - Figshare
+
+---
+
+# All together
+
+.center[
+![](figures/marwick2017_reprodspectrum.png)
+]
+
+.reference[Marwick, B. (+48 other authors), 2017. Open science in archaeology. SAA Archaeological Record 17, 8–14.]
+
+---
+
+# Start now.
+
+It's easy, advantageous, and sustainable. Don't wait to invest the one time effort to switch your workflow.
+
+--
+
+One last question: Who has access to your publications? 
+
+--
+
+Preprints e.g. at .bold[SocArXiv] (https://osf.io/preprints/socarxiv/) are an easy and effortless way to guarantee access to your publications for everyone. 
+
+.center[
+![:scale 60%](figures/marwick2017_proof_preprints.png)
+]
+
+.reference[Marwick, B. (+48 other authors), 2017. Open science in archaeology. SAA Archaeological Record 17, 8–14.]
+
+---
+
+class: full-page-slide
+
+# Thank you very much for your attention
     </textarea>
 <script src="libs/remark-latest.min.js"></script>
 <script src="moin_macros.js"></script>

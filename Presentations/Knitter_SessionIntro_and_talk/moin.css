@@ -156,3 +156,19 @@ div.my-header {
 .strikethrough {
     text-decoration: line-through;
 }
+
+
+/* Full page slide */
+
+.full-page-slide {
+    background-color: #8419d6;    
+}
+.full-page-slide > h1  {
+    color: #ffffff;
+    font-size: 50px;
+    text-shadow: none;left
+    font-weight: 400;
+    text-align: center;
+    margin-left: 15px;
+    padding-top: 25%;
+}

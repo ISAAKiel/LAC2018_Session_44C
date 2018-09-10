@@ -246,6 +246,14 @@ class: full-page-slide
 
 # Thank you very much for your attention
 
+<br>
+
+.center[
+.white[You can find the slides here: https://github.com/ISAAKiel/LAC2018_Session_44C ]
+
+![:scale 10%](figures/qrcode.svg) 
+]
+
 
 
 

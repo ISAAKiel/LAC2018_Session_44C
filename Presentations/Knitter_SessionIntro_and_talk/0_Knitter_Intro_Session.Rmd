@@ -54,4 +54,18 @@ Yeha, Ethiopia
 
 7. Final discussion
 
-Please visit https://github.com/ISAAKiel/LAC2018_Session_44C for access to the presentations and links
+---
+
+class: full-page-slide
+
+.white[
+.center[
+<div style="font-size:35px;font-weight:bold;line-height:1.4em">
+Please visit <br>
+https://github.com/ISAAKiel/LAC2018_Session_44C <br>
+to access the slides and links
+</div>
+
+
+![:scale 15%](figures/qrcode.svg) 
+]]

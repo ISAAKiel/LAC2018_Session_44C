@@ -230,6 +230,28 @@ Markdown, RMarkdown, Pandoc
 ---
 
 
+# Version control
+
+.left[![:scale 10%](figures/gitlogo.png)]
+
+.pull-left[
+
+<video controls autoplay>
+  <source src="figures/gource.mp4" type="video/mp4">  
+  Your browser does not support the video tag.
+ </video>
+]
+
+
+.pull-right[
+.center[![:scale 80%](figures/gitbranches.png)]
+
+.reference[https://git-scm.com/]
+]
+
+---
+
+
 # Containerization
 
 .center[![:scale 10%](./figures/docker_logo.png)]

@@ -316,7 +316,7 @@ One last question: Who has access to your publications?
 
 --
 
-Preprints e.g. at .bold[SocArXiv] (https://osf.io/preprints/socarxiv/) are an easy and effortless way to guarantee access to your publications for everyone. 
+Preprints e.g. at .bold[SocArXiv] (https://osf.io/preprints/socarxiv/) are an easy and effortless way to guarantee access to your publications to everyone. 
 
 .center[
 ![:scale 60%](figures/marwick2017_proof_preprints.png)

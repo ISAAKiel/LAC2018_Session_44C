@@ -23,8 +23,5 @@ CRAN Task View: Archaeological Science by Ben Marwick
 - access to the vase world of R blogs and bloggers: [R-Bloggers](https://www.r-bloggers.com/)
 - try R live in your browser: [here](http://rextester.com/l/r_online_compiler) or [here](https://wandbox.org/)
 
-# Software
-
-
 
 

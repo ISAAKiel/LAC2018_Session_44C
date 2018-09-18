@@ -113,7 +113,7 @@ sidebarLayout(
         sunits <<- mosaic(sframe, density = input$n_units)
       }
       else if (input$units == "Gridded") {
-        sunits <<- gridded(sframe, n = round(sqrt(input$n_units)))
+        sunits <<- fieldwalkr::gridded(sframe, n = round(sqrt(input$n_units)))
       }
       else if (input$units == "Transect") {
         sunits <<- transects(sframe, n = input$n_units)

@@ -1,0 +1,205 @@
+---
+title: "`fieldwalkr`"
+subtitle: "An R package for spatial sampling and field survey simulation"
+author: "Joe Roe (University of Copenhagen)"
+runtime: shiny
+output: 
+  ioslides_presentation:
+    smaller: true
+---
+
+## reproducibility -> replicability
+
+## spatial sampling in archaeology
+
+## `fieldwalkr`
+
+## Model
+
+## Implementation
+
+## demo: installation
+```{r echo=FALSE}
+# secret presentation hacks
+options(tidyverse.quiet = TRUE)
+theme_blank <- function() {
+  theme_minimal() + 
+    theme(axis.text = element_blank())
+}
+
+sframe <<- NA
+sunits <<- NA
+ssites <<- NA
+```
+### package on github:
+```{r}
+devtools::install_github("joeroe/fieldwalkr", quiet = TRUE)
+library("fieldwalkr")
+
+```
+
+###  friends:
+```{r message=FALSE}
+library("magrittr")  # pipes!
+library("tidyverse") # make R more better
+library("sf")        # make R a GIS
+library("maptools")  # spatial glue
+```
+
+### and old friends:
+```{r message=FALSE}
+library("spatstat")  # point pattern analysis
+```
+
+## demo: sampling frame
+
+```{r, echo=FALSE} 
+renderPlot({
+  n_poly <- input$n_poly
+  sframe <<- rpolygon()
+  ggplot() + geom_sf(data = sframe) + theme_blank()
+})
+actionButton("n_poly", icon = icon("refresh"), label = "")
+```
+
+## demo: point pattern
+```{r echo=FALSE}
+sidebarLayout(
+  sidebarPanel(
+    selectInput("process", label = "Process", choices = c("LGCP")),
+    sliderInput("mu", label = "μ", min = 0.5, max = 8,
+                step = 0.5, value = 3),
+    sliderInput("var", label = "σ²", min = 0, max = 1,
+                step = 0.05, value = 0.1)
+  ),
+  mainPanel(
+    renderPlot({
+      sites_mu <<- input$mu
+      sites_var <<- input$var
+      sframe %>% divide_by(1000) %>% as("Spatial") %>% as.owin() -> sframe_owin 
+      ssites <<- rLGCP(mu = sites_mu, var = sites_var, win = sframe_owin) %>% 
+        st_as_sf() %>% 
+        filter(label == "point") %>% 
+        st_geometry() %>% 
+        multiply_by(1000) %>% 
+        st_set_crs(st_crs(sframe))
+      
+      ggplot() + 
+        geom_sf(data = sframe) +
+        geom_sf(data = ssites) +
+        theme_blank()
+    })
+  )
+)
+```
+
+## demo: sample units
+
+```{r echo=FALSE}
+sidebarLayout(
+  sidebarPanel(
+    selectInput("units", label = "Units", choices = c("Mosaic", "Gridded",
+                                                      "Transect")),
+    sliderInput("n_units", label = "Number of units", min = 1, max = 500,
+                step = 1, value = 50),
+    selectInput("sample", label = "Sample", choices = c("Complete", "Random",
+                                                        "Systematic")),
+    sliderInput("n_sample", label = "Sample size", min = 1, max = 100,
+                step = 1, value = 10, post = "%")
+  ),
+  mainPanel(
+    renderPlot({
+      if (input$units == "Mosaic") {
+        sunits <<- mosaic(sframe, density = input$n_units)
+      }
+      else if (input$units == "Gridded") {
+        sunits <<- gridded(sframe, n = round(sqrt(input$n_units)))
+      }
+      else if (input$units == "Transect") {
+        sunits <<- transects(sframe, n = input$n_units)
+      }
+      
+      if (input$sample == "Complete") {
+        sunits$sample <<- factor(rep(TRUE, nrow(sunits)), levels = c(FALSE, TRUE))
+      }
+      else if (input$sample == "Random") {
+        frac <- input$n_sample / 100
+        sunits <<- sample_random(sunits, fraction = frac)
+      }
+      else if (input$sample == "Systematic") {
+        frac <- input$n_sample / 100
+        sunits <<- sample_systematic(sunits, n = round(nrow(sunits) / (nrow(sunits) * frac)))
+      }
+        
+      ggplot() + 
+        geom_sf(data = sunits, mapping = aes(fill = sample)) + 
+        scale_fill_manual(values = c("lightgrey", "yellow"), guide = FALSE) +
+        geom_sf(data = sframe, fill = NA) +
+        theme_blank()
+    })
+  )
+)
+```
+
+## demo: detection functions
+
+```{r eval=FALSE}
+# Detect points by applying a simple detection rate
+#' @export
+detect_simple <- function(unit, points, rate = 1) {
+  detect_perfect(unit, points) %>%
+    dplyr::sample_frac(rate) %>%
+    return()
+}
+
+# Detect points by applying a uniform stochastic detection rate
+#' @export
+detect_random <- function(unit, points, min = 0, max = 1) {
+  detect_simple(unit, points, rate = runif(1,min,max)) %>%
+    return()
+}
+
+# Detect points by applying a (truncated) normal stochastic detection rate
+#' @export
+detect_normal <- function(unit, points, mean = 0.5, sd = 0.2) {
+  repeat {
+    rate <- rnorm(1, mean, sd)
+    if(rate > 0 && rate < 1) break
+  }
+  detect_simple(unit, points, rate = rate) %>%
+    return()
+}
+```
+
+## demo: `survey()`
+
+```{r echo=FALSE}
+sidebarLayout(
+  sidebarPanel(
+    selectInput("dfunc", label = "Detection function", choices = "Simple"),
+    sliderInput("rate", label = "Detection rate", min = 0, max = 1,
+                step = 0.1, value = 1)
+  ),
+  mainPanel(
+    renderPlot({
+      ssurvey <- survey(ssites, sunits, detection_function = detect_simple,
+                        rate = input$rate)
+      ggplot() + 
+        geom_sf(data = sunits %>% filter(sample == TRUE)) + 
+        geom_sf(data = sframe, fill = NA) +
+        geom_sf(data = ssurvey) +
+        theme_blank()
+    })
+  )
+)
+```
+
+## now what?
+
+## now what?
+
+### percentage recovery
+### refit LGCP
+
+## pipelines!
+

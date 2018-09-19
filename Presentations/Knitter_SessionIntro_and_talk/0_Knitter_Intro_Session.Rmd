@@ -1,8 +1,8 @@
 ---
 title: "Introduction to Reproducible Research"
-subtitle: "using open source software."
+subtitle: "using open source software"
 author: "Landscape Archaeolgoy Conference 2018 | Session 44C"
-date: "2018-09-19 | CRC1266-A2 | Daniel Knitter & Wolfgang Hamer"
+date: "2018-09-19 | CRC1266-A2 | ISAAKiel"
 output:
   xaringan::moon_reader:
     css: ["default","moin.css","moin_fonts.css"]
@@ -36,7 +36,7 @@ Offer an overview about
 
 # List of Presentations
 
-1. Reproducible research with R
+1. .bold[Daniel Knitter] Introduction to Reproducible research
 
 2. .bold[Joe Roe] `fieldwalkr`: an R package for spatial sampling and field survey 
 simulation

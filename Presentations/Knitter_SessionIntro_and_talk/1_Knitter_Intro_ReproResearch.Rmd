@@ -55,6 +55,23 @@ Is there a problem?
 
 ---
 
+# Introduction
+
+Is there a problem?
+
+.pull-left[
+![:scale 90%](figures/reproducibility-graphic-online1.jpeg)
+]
+
+.pull-right[
+![:scale 60%](figures/reproducibility-graphic-online4b.jpg)
+]
+
+.reference[Baker 2016: 1,500 scientists lift the lid on reproducibility. Nature. https://www.nature.com/news/1-500-scientists-lift-the-lid-on-reproducibility-1.19970]
+
+---
+
+exclude: true
 
 # Introduction
 
@@ -94,11 +111,11 @@ For You
 
 --
 
-.italic["However, with computational science and the corresponding collection of large and complex data sets the notion of replication can be murkier."]
+.italic["However, with computational science and the corresponding collection of large and complex data sets the notion of replication can be murkier."] (no replication possible; computational not feasible; ...)
 
 --
 
-Accordingly, Researchers .italic["(...) have been calling for reproducibility, or reproducible research, as an attainable minimum standard for assessing the value of scientific claims, particularly when full independent replication of a study is not feasible."]
+Accordingly, Researchers .italic["(...) have been calling for reproducibility, or reproducible research, as an .underline[attainable minimum standard for assessing the value of scientific claims], particularly when full independent replication of a study is not feasible."]
 
 .center[
 
@@ -271,8 +288,8 @@ Markdown, RMarkdown, Pandoc
 
 .pull-left[
 
-<video controls autoplay>
-  <source src="figures/gource.mp4" type="video/mp4">  
+<video controls autoplay loop>
+  <source src="figures/gource.mp4" type="video/mp4">
   Your browser does not support the video tag.
  </video>
 ]

@@ -1,7 +1,7 @@
 ---
 title: "Introduction to Reproducible Research"
 subtitle: "using open source software"
-author: "Landscape Archaeolgoy Conference 2018 | Session 44C"
+author: "Landscape Archaeology Conference 2018 | Session 44C"
 date: "2018-09-19 | CRC1266-A2 | ISAAKiel"
 output:
   xaringan::moon_reader:

@@ -23,6 +23,41 @@ layout: true
 
 # Introduction
 
+Is there a problem?
+
+--
+
+.pull-left[
+![:scale 90%](figures/reproducibility-graphic-online1.jpeg)
+]
+
+.pull-right[
+![:scale 70%](figures/reproducibility-graphic-online3a.jpg)
+]
+
+.reference[Baker 2016: 1,500 scientists lift the lid on reproducibility. Nature. https://www.nature.com/news/1-500-scientists-lift-the-lid-on-reproducibility-1.19970]
+
+---
+
+# Introduction
+
+Is there a problem?
+
+.pull-left[
+![:scale 90%](figures/reproducibility-graphic-online1.jpeg)
+]
+
+.pull-right[
+![:scale 60%](figures/reproducibility-graphic-online4.jpg)
+]
+
+.reference[Baker 2016: 1,500 scientists lift the lid on reproducibility. Nature. https://www.nature.com/news/1-500-scientists-lift-the-lid-on-reproducibility-1.19970]
+
+---
+
+
+# Introduction
+
 Why should research be reproducible?
 
 --

@@ -6,36 +6,141 @@ runtime: shiny
 output: 
   ioslides_presentation:
     smaller: true
+    logo: img/ku_logo_dk_hh.png
+    css: styles.css
 ---
 
-## reproducibility -> replicability
+## from reproducibility to replicability
+
+```{r eval=FALSE}
+open_data %>% 
+  open_software() %>% 
+  open_code() %>% 
+  reproducible_results
+```
+
+## from reproducibility to replicability
+
+```{r eval=FALSE}
+the_past %>% 
+  preservation() %>% 
+  recovery(method = c("excavation", "survey", "?")) %>% # usually destructive!
+  sampling() %>% 
+  logistics() %>% 
+  lab_analysis() %>% 
+  open_data %>% 
+  open_software() %>% 
+  open_code() %>% 
+  reproducible_results %>% 
+  interpretation
+```
 
 ## spatial sampling in archaeology
 
+![](img/binford.gif) 
+
+## spatial sampling in archaeology
+
+![](img/orton.jpeg)
+
 ## `fieldwalkr`
 
-## Model
+An R package simulation framework for spatial surveys and sampling
 
-## Implementation
+* Exploratory planning of sampling strategies
+* Analysis of theoretical patterns
+* Reanalysis of survey data ("what if I'd done it this way?")
+
+---
+
+![](img/model.svg)
+
+---
+
+![](img/model_pp.svg)
+
+---
+
+![](img/model_pp2.svg)
+
+---
+
+![](img/model.svg)
+
+---
+
+![](img/model_sample.svg)
+
+---
+
+![](img/model.svg)
+
+---
+
+![](img/model_dfunc.svg)
+
+---
+
+![](img/model.svg)
+
+## implementation
+
+### R
+
+* open source and scripted = reproducible
+* *very* large ecosystem (particularly for spatial analysis)
+
+### tidyverse
+
+* modern, functional code style
+* 'tidy' data paradigm (everything is a table)
+* sf > sp
+* no 'tidy' spatstat :(
+
+### shiny
+
+* web-based GUIs
+* limited feature set
 
 ## demo: installation
 ```{r echo=FALSE}
 # secret presentation hacks
 options(tidyverse.quiet = TRUE)
+
 theme_blank <- function() {
   theme_minimal() + 
     theme(axis.text = element_blank())
 }
 
+sf_to_ppp <- function(points, frame) {
+  frame %>% divide_by(1000) %>% as("Spatial") %>% as.owin() -> window
+  points <- points / 1000
+  p3 <- ppp(st_coordinates(points)[,1], st_coordinates(points)[,2], window = window)
+  return(p3)
+}
+
+rlgcp <- function(frame, mu, var) {
+  frame %>% divide_by(1000) %>% as("Spatial") %>% as.owin() -> frame_owin 
+  rLGCP(mu = mu, var = var, win = frame_owin) %>% 
+    st_as_sf() %>% 
+    filter(label == "point") %>% 
+    st_geometry() %>% 
+    multiply_by(1000) %>% 
+    st_set_crs(st_crs(frame)) %>% 
+    return()
+}
+
 sframe <<- NA
 sunits <<- NA
+sites_mu <<- NA
+sites_var <<- NA
 ssites <<- NA
+ssurvey <<- NA
 ```
 ### package on github:
 ```{r}
 devtools::install_github("joeroe/fieldwalkr", quiet = TRUE)
 library("fieldwalkr")
-
 ```
 
 ###  friends:
@@ -76,13 +181,7 @@ sidebarLayout(
     renderPlot({
       sites_mu <<- input$mu
       sites_var <<- input$var
-      sframe %>% divide_by(1000) %>% as("Spatial") %>% as.owin() -> sframe_owin 
-      ssites <<- rLGCP(mu = sites_mu, var = sites_var, win = sframe_owin) %>% 
-        st_as_sf() %>% 
-        filter(label == "point") %>% 
-        st_geometry() %>% 
-        multiply_by(1000) %>% 
-        st_set_crs(st_crs(sframe))
+      ssites <<- rlgcp(sframe, sites_mu, sites_var)
       
       ggplot() + 
         geom_sf(data = sframe) +
@@ -105,7 +204,9 @@ sidebarLayout(
     selectInput("sample", label = "Sample", choices = c("Complete", "Random",
                                                         "Systematic")),
     sliderInput("n_sample", label = "Sample size", min = 1, max = 100,
-                step = 1, value = 10, post = "%")
+                step = 1, value = 10, post = "%"),
+    sliderInput("orient", label = "Orientation", min = 0, max = 360, step = 10,
+                value = 0, post = "°")
   ),
   mainPanel(
     renderPlot({
@@ -113,10 +214,11 @@ sidebarLayout(
         sunits <<- mosaic(sframe, density = input$n_units)
       }
       else if (input$units == "Gridded") {
-        sunits <<- gridded(sframe, n = round(sqrt(input$n_units)))
+        sunits <<- fieldwalkr::gridded(sframe, n = round(sqrt(input$n_units)),
+                                       orientation = input$orient)
       }
       else if (input$units == "Transect") {
-        sunits <<- transects(sframe, n = input$n_units)
+        sunits <<- transects(sframe, n = input$n_units, orientation = input$orient)
       }
       
       if (input$sample == "Complete") {
@@ -182,7 +284,7 @@ sidebarLayout(
   ),
   mainPanel(
     renderPlot({
-      ssurvey <- survey(ssites, sunits, detection_function = detect_simple,
+      ssurvey <<- survey(ssites, sunits, detection_function = detect_simple,
                         rate = input$rate)
       ggplot() + 
         geom_sf(data = sunits %>% filter(sample == TRUE)) + 
@@ -196,10 +298,60 @@ sidebarLayout(
 
 ## now what?
 
-## now what?
+## assessing performance
 
-### percentage recovery
-### refit LGCP
+### % of sites recovered
 
-## pipelines!
+```{r echo=FALSE}
+renderPrint({
+  (nrow(ssurvey) / length(ssites)) * 100
+})
+```
 
+### model parameter estimation
+```{r echo=FALSE}
+renderPrint({
+  spatstat::kppm(sf_to_ppp(st_geometry(ssurvey), sframe), clusters = "LGCP")
+})
+```
+
+## iteration & parameterisation
+
+```{r warning=FALSE}
+region <- rpolygon()
+mu <- 5
+var <- 0.3
+sites <- rlgcp(region, mu = mu, var = var)
+units <- fieldwalkr::gridded(region, 10)
+
+samples <- map(seq(0.05, 1, by = 0.05),
+               function(x) sample_random(units, fraction = x))
+
+rmse <- map(samples, function(sample) {
+  obs <- survey(sites, sample)
+  model <- spatstat::kppm(sf_to_ppp(st_geometry(obs), region), clusters = "LGCP")
+  sqrt(((mu-model$mu)^2+(var-model$modelpar["sigma2"])^2)/2)
+}) %>% unlist()
+
+```
+
+## iteration & parameterisation
+
+```{r echo=FALSE}
+surveys <- as.data.frame(cbind(coverage = seq(0.05, 1, by = 0.05), rmse))
+ggplot(surveys, aes(x = coverage, y = rmse)) + geom_line()
+```
+
+## `fieldwalkr`
+
+### http://github.com/joeroe/fieldwalkr
+
+* alpha(ish)
+* documented
+* to do:
+    * shiny interface
+    * extended point pattern modelling (replace or wrap spatstat?)
+    * adaptive sampling
+    * complex detection functions
+    * logistical calibrations
+    * vignettes & CRAN release

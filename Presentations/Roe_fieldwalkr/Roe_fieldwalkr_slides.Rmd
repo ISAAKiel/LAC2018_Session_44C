@@ -214,7 +214,7 @@ sidebarLayout(
         sunits <<- mosaic(sframe, density = input$n_units)
       }
       else if (input$units == "Gridded") {
-        sunits <<- fieldwalkr::gridded(sframe, n = round(sqrt(input$n_units)),
+        sunits <<- quadrats(sframe, n = round(sqrt(input$n_units)),
                                        orientation = input$orient)
       }
       else if (input$units == "Transect") {
@@ -322,7 +322,7 @@ region <- rpolygon()
 mu <- 5
 var <- 0.3
 sites <- rlgcp(region, mu = mu, var = var)
-units <- fieldwalkr::gridded(region, 10)
+units <- quadrats(region, 10)
 
 samples <- map(seq(0.05, 1, by = 0.05),
                function(x) sample_random(units, fraction = x))

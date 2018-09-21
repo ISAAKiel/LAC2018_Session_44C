@@ -20,7 +20,7 @@ CRAN Task View: Archaeological Science by Ben Marwick
 - R-Mailinglists ([link](https://www.r-project.org/mail.html)); specifically for geographic questions: R-sig-geo ([link](https://stat.ethz.ch/mailman/listinfo/R-SIG-Geo)).
 - MOOCs: [coursera](https://www.coursera.org/learn/r-programming), [edX](https://www.edx.org/learn/r-programming), [udacity](https://eu.udacity.com/course/data-analysis-with-r--ud651)
 - interactive tutorials: [datacamp](https://www.datacamp.com/courses/free-introduction-to-r); a nice collection can be found [here](https://www.rstudio.com/online-learning/)
-- access to the vase world of R blogs and bloggers: [R-Bloggers](https://www.r-bloggers.com/)
+- access to the vast world of R blogs and bloggers: [R-Bloggers](https://www.r-bloggers.com/)
 - try R live in your browser: [here](http://rextester.com/l/r_online_compiler) or [here](https://wandbox.org/)
 
 

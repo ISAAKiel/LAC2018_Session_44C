@@ -139,7 +139,7 @@ ssurvey <<- NA
 ```
 ### package on github:
 ```{r}
-devtools::install_github("joeroe/fieldwalkr", quiet = TRUE)
+#devtools::install_github("joeroe/fieldwalkr", quiet = TRUE)
 library("fieldwalkr")
 ```
 
@@ -149,6 +149,8 @@ library("magrittr")  # pipes!
 library("tidyverse") # make R more better
 library("sf")        # make R a GIS
 library("maptools")  # spatial glue
+library("RandomFields")
+library("RandomFieldsUtils")
 ```
 
 ### and old friends:
@@ -214,11 +216,11 @@ sidebarLayout(
         sunits <<- mosaic(sframe, density = input$n_units)
       }
       else if (input$units == "Gridded") {
-        sunits <<- quadrats(sframe, n = round(sqrt(input$n_units)),
-                                       orientation = input$orient)
+        sunits <<- fieldwalkr::quadrats(sframe, n = round(sqrt(input$n_units)),
+                                        orientation = input$orient)
       }
       else if (input$units == "Transect") {
-        sunits <<- transects(sframe, n = input$n_units, orientation = input$orient)
+        sunits <<- fieldwalkr::transects(sframe, n = input$n_units, orientation = input$orient)
       }
       
       if (input$sample == "Complete") {
@@ -322,7 +324,7 @@ region <- rpolygon()
 mu <- 5
 var <- 0.3
 sites <- rlgcp(region, mu = mu, var = var)
-units <- quadrats(region, 10)
+units <- fieldwalkr::quadrats(region, 10)
 
 samples <- map(seq(0.05, 1, by = 0.05),
                function(x) sample_random(units, fraction = x))

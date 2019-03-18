@@ -1,0 +1,12 @@
+name: LAC2018_fieldwalkr
+title: LAC2018_fieldwalkr
+username:
+account: joeroe
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 796278
+bundleId: 1946988
+url: https://joeroe.shinyapps.io/LAC2018_fieldwalkr/
+when: 1552897446.16771
+asMultiple: FALSE
+asStatic: FALSE
